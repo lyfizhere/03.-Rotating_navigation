@@ -40,6 +40,11 @@ body {
   transition: transform 0.5s linear; /* Same as the container roation */
 }
 
+.container.show-nav .circle {
+  /* When we have show-nav class in the container, we need to rotate the circle so that we can see that close button. */
+  transform: rotate(-70deg);
+}
+
 .circle button {
   cursor: pointer;
   position: absolute;
@@ -52,6 +57,10 @@ body {
   color: #fff;
 }
 
+/* .circle button:focus {
+  outline: none;
+} */
+
 .circle button#open {
   left: 60%;
 }
@@ -60,7 +69,60 @@ body {
   transform: rotate(90deg);
   transform-origin: top left;
 }
+.container.show-nav + nav li {
+  /* When we have show-nav class in the container, we need to see the navigation bar below */
+  transform: translateX(0);
+  transition-delay: 0.3s;
+}
 
+nav {
+  position: fixed; /* It will fix the navigation bar to left corner while we scroll down. */
+  bottom: 40px;
+  left: 0;
+  z-index: 100; /* to keep at top */
+}
+nav ul {
+  list-style: none;
+  padding-left: 30px;
+}
+nav ul li {
+  text-transform: uppercase;
+  color: #fff;
+  margin: 40px 0;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in;
+}
+
+nav ul li i {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+nav ul li + li {
+  margin-left: 15px;
+  transform: translateX(-150%);
+}
+nav ul li + li + li {
+  margin-left: 30px;
+  transform: translateX(-200%);
+}
 .content img {
-  max-width: 25%;
+  max-width: 15%;
+}
+
+.content {
+  max-width: 1000px; /* The max-width CSS property sets the maximum width of an element. It prevents the used value of the width property from becoming larger than the value specified by max-width. */
+  margin: 50px auto;
+}
+.content h1 {
+  margin: 0;
+}
+.content small {
+  color: #555;
+  font-style: italic;
+}
+
+.content p {
+  color: #333;
+  line-height: 1.5;
 }
